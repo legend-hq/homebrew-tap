@@ -1,19 +1,21 @@
 class LegendCli < Formula
-  desc "CLI for Legend Prime"
+  desc "CLI and MCP server for Legend"
   homepage "https://legend.xyz"
   license "MIT"
-  version "0.1.0"
+  version "0.0.1"
 
-  depends_on "rust" => :build
+  on_macos do
+    on_arm do
+      url "https://github.com/legend-hq/legend-cli/releases/download/v#{version}/legend-cli-macos-aarch64.tar.gz"
+      sha256 "0ad00ad2de10bb22e370d77ba36931db2a50e4c5b646f9c7a15c6dd3ed2fa355"
+    end
+  end
 
   def install
-    system "cargo", "install", "--locked",
-           "--root", prefix,
-           "legend-cli",
-           "--version", version.to_s
+    bin.install "legend-cli"
   end
 
   test do
-    assert_match "legend-cli", shell_output("#{bin}/legend-cli --version")
+    assert_match "legend-cli", shell_output("#{bin}/legend-cli --help")
   end
 end
