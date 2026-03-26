@@ -2,17 +2,18 @@ class LegendCli < Formula
   desc "CLI and MCP server for Legend"
   homepage "https://legend.xyz"
   license "MIT"
-  version "0.0.1"
+  version "0.0.2"
 
   on_macos do
     on_arm do
       url "https://github.com/legend-hq/legend-cli/releases/download/v#{version}/legend-cli-macos-aarch64.tar.gz"
-      sha256 "0ad00ad2de10bb22e370d77ba36931db2a50e4c5b646f9c7a15c6dd3ed2fa355"
+      sha256 "cc31068e1ae6c1bb8a69419cd9fdc5adf34d3dfe066b504733e31cda80e91427"
     end
   end
 
   def install
-    bin.install "legend-cli"
+    prefix.install "legend-cli.app"
+    bin.write_exec_script prefix/"legend-cli.app/Contents/MacOS/legend-cli"
   end
 
   test do
