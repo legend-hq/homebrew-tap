@@ -12,8 +12,11 @@ class LegendCli < Formula
   end
 
   def install
-    prefix.install "legend-cli.app"
-    bin.write_exec_script prefix/"legend-cli.app/Contents/MacOS/legend-cli"
+    # Homebrew strips the top-level .app directory from the tarball,
+    # so we rebuild it in the prefix.
+    app = prefix/"legend-cli.app"
+    app.install Dir["*"]
+    bin.write_exec_script app/"Contents/MacOS/legend-cli"
   end
 
   test do
