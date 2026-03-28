@@ -2,12 +2,12 @@ class LegendCli < Formula
   desc "CLI and MCP server for Legend"
   homepage "https://legend.xyz"
   license "MIT"
-  version "0.0.4"
+  version "0.0.5"
 
   on_macos do
     on_arm do
       url "https://github.com/legend-hq/legend-cli/releases/download/v#{version}/legend-cli-macos-aarch64.tar.gz"
-      sha256 "0d557e0bd9ca463baed3a3f81e5bf6a0bd37b4618dd5706744b422dc39afe675"
+      sha256 "9605df4261feac260e568a076096a8594458da7b674e374566f2bf95a2fa1a91"
     end
   end
 
